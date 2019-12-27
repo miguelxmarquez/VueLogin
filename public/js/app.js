@@ -52366,19 +52366,20 @@ var testing = new Vue({
           email: this.email,
           password: this.password
         }).then(function (response) {
-          Swal('Has iniciado Sesion', 'Datos Correctos', 'success');
+          Swal('Has iniciado Sesion', 'Datos Correctos', 'success'); // Sweet Success
         })["catch"](function (error) {
-          //console.log(error.response.data);
           var er = error.response.data.errors;
           var mensaje = "Error no identificado";
 
           if (er.hasOwnProperty('email')) {
             mensaje = er.email[0];
-          } else {
+          } else if (er.hasOwnProperty('password')) {
             mensaje = er.password[0];
+          } else if (er.hasOwnProperty('login')) {
+            mensaje = er.login[0];
           }
 
-          Swal('Error', mensaje, 'error');
+          Swal('Error', mensaje, 'error'); // Sweet Error
         });
       }
     }
