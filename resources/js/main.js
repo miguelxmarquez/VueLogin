@@ -2,7 +2,7 @@
 
 import Axios from "axios";
 
-new Vue({
+var testing = new Vue({
 
     el: '#app_login',
 
@@ -27,11 +27,23 @@ new Vue({
                     password: this.password
                 })
                 .then(function (response) {
-                    console.log(response);
+                   Swal('Has iniciado Sesion', 'Datos Correctos', 'success');
 
                 })
                 .catch(function (error) {
-                    console.log(error.response.data);
+                    //console.log(error.response.data);
+                    let er = error.response.data.errors;
+
+                    let mensaje = "Error no identificado";
+
+                    if (er.hasOwnProperty('email')) {
+                        mensaje = er.email[0];
+                    } else {
+                        mensaje = er.password[0];
+                    }
+
+                    Swal('Error', mensaje, 'error');
+
                 });
             }
             
