@@ -28,14 +28,14 @@ var testing = new Vue({
                 })
 
                 .then(function (response) {
-                   Swal('Has iniciado Sesion', 'Datos Correctos', 'success'); // Sweet Success
+                   swal('Has iniciado Sesion', 'Datos Correctos', 'success'); // Sweet Success
 
                 })
 
                 .catch(function (error) {
 
                     let er = error.response.data.errors;
-                    
+
                     let mensaje = "Error no identificado";
 
                     if (er.hasOwnProperty('email')) {
@@ -52,7 +52,7 @@ var testing = new Vue({
 
                     }
 
-                    Swal('Error', mensaje, 'error'); // Sweet Error
+                    swal('Error', mensaje, 'error'); // Sweet Error
 
                 });
             }

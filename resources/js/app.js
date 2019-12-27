@@ -4,5 +4,5 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-import Swal from 'sweetalert2';
+import swal from 'sweetalert';
 
