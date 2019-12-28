@@ -49361,10 +49361,24 @@ var testing = new Vue({
           email: this.email,
           password: this.password
         }).then(function (response) {
-          swal('Has iniciado Sesion', 'Datos Correctos', 'success'); // Sweet Success
+          swal({
+            title: 'Has iniciado Sesion',
+            text: 'Datos Correctos',
+            icon: 'success',
+            closeOnClickOutside: false,
+            closeOnEsc: false
+          }); // Sweet Success
+        }).then(function (select) {
+          if (select) {
+            location.reload(2000);
+          } else {
+            setTimeout(function () {
+              window.location.reload(1);
+            }, 2000);
+          }
         })["catch"](function (error) {
           var er = error.response.data.errors;
-          var mensaje = "Error no identificado";
+          var mensaje = 'Error no identificado';
 
           if (er.hasOwnProperty('email')) {
             mensaje = er.email[0];
@@ -49374,7 +49388,13 @@ var testing = new Vue({
             mensaje = er.login[0];
           }
 
-          swal('Error', mensaje, 'error'); // Sweet Error
+          swal({
+            title: 'Error, los datos no coinciden',
+            text: 'Intente más tarde',
+            icon: 'error',
+            closeOnClickOutside: false,
+            closeOnEsc: false
+          }); // Sweet Error
         });
       }
     }
