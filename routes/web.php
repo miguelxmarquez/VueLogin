@@ -17,6 +17,10 @@
 
 Auth::routes();
 
-Route::get('/', 'UsersController@index')->name('users');
+Route::group(['middleware' => 'admin'], function () {
+
+    Route::get('/', 'HomeController@index')->name('root');
+    
+});
 
 Route::post('loginVue', 'LoginController@loging')->name('loging');
