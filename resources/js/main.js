@@ -43,7 +43,7 @@ var testing = new Vue({
                     } else{                        
                         setTimeout(function(){
                             window.location.reload(1);
-                         }, 2000);
+                         }, 1500);
                     } 
                 })
 
@@ -64,7 +64,7 @@ var testing = new Vue({
 
                     swal({
                         title: 'Error, los datos no coinciden', 
-                        text: 'Intente más tarde', 
+                        text: 'Intente nuevamente', 
                         icon: 'error',
                         closeOnClickOutside: false,
                         closeOnEsc: false
